@@ -21,6 +21,8 @@ if 0 | endif
   NeoBundle 'Shougo/neosnippet-snippets'
   " ctagsのインストールが必須
   NeoBundle 'vim-scripts/taglist.vim'
+  NeoBundle 'PDV--phpDocumentor-for-Vim'
+
   call neobundle#end()
 
   " Required:
@@ -101,3 +103,25 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns._ = '\h\w*'
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+
+"=============
+"taglist設定
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+let Tlist_Show_One_File = 1                   " 現在表示中のファイルのみのタグしか表示しない
+let Tlist_Use_Right_Window = 1                " 右側にtag listのウインドうを表示する
+let Tlist_Exit_OnlyWindow = 1                 " taglistのウインドウだけならVimを閉じる
+
+
+"=============
+"PDV設定
+let g:pdv_cfg_Type = "mixed"
+let g:pdv_cfg_Package = ""
+let g:pdv_cfg_Version = "$id$"
+let g:pdv_cfg_Author = "nakamura <tsuyoshin@gmail.com>"
+let g:pdv_cfg_Copyright = ""
+let g:pdv_cfg_License = ""
+let g:pdv_cfg_ReturnVal = "void"
+inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
+nnoremap <C-D> :call PhpDocSingle()<CR>
+vnoremap <C-D> :call PhpDocRange()<CR>
