@@ -19,6 +19,8 @@ if 0 | endif
   NeoBundle 'Shougo/neocomplcache'
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
+  " ctagsのインストールが必須
+  NeoBundle 'vim-scripts/taglist.vim'
   call neobundle#end()
 
   " Required:
