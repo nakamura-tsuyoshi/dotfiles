@@ -22,6 +22,11 @@ if 0 | endif
   " ctagsのインストールが必須
   NeoBundle 'vim-scripts/taglist.vim'
   NeoBundle 'PDV--phpDocumentor-for-Vim'
+  NeoBundle 'junegunn/vim-easy-align'
+  NeoBundle 'plasticboy/vim-markdown'
+  NeoBundle 'kannokanno/previm'
+  NeoBundle 'tyru/open-browser.vim'
+  NeoBundle 'szw/vim-tags'
 
   call neobundle#end()
 
@@ -49,6 +54,19 @@ set lcs=tab:>.,trail:_,extends:\
 set list
 highlight SpecialKey cterm=NONE ctermfg=7 guifg=7
 highlight JpSpace cterm=underline ctermfg=7 guifg=7
+
+"=============
+" vim-tags
+set tags=~/.vim/tags/makuake/.tags
+let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -f ~/.vim/tags/makuake/ -R . 2>/dev/null"
+let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R -f ~/.vim/tags/makuake/.Gemfile.lock.tags `bundle show --paths` 2>/dev/null"
+set tags+=.tags
+set tags+=.Gemfile.lock.tags
+
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
+
+
 
 "=============
 " syntastic
@@ -125,3 +143,18 @@ let g:pdv_cfg_ReturnVal = "void"
 inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
 nnoremap <C-D> :call PhpDocSingle()<CR>
 vnoremap <C-D> :call PhpDocRange()<CR>
+
+
+
+"=============
+"vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+"=============
+" markdown
+au BufRead,BufNewFile *.md set filetype=markdown
+
+"=============
+" eslint
+let g:syntastic_javascript_checkers = ['eslint']
