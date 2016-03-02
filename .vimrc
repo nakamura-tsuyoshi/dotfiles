@@ -27,6 +27,7 @@ if 0 | endif
   NeoBundle 'kannokanno/previm'
   NeoBundle 'tyru/open-browser.vim'
   NeoBundle 'szw/vim-tags'
+  NeoBundle 'ngmy/vim-rubocop'
 
   call neobundle#end()
 
@@ -80,6 +81,9 @@ let g:syntastic_php_php_args = '-l'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+let g:syntastic_mode_map = { 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
 
 "=============
 "snippet
@@ -153,8 +157,9 @@ nmap ga <Plug>(EasyAlign)
 
 "=============
 " markdown
-au BufRead,BufNewFile *.md set filetype=markdown
+"au BufRead,BufNewFile *.md set filetype=markdown
 
 "=============
 " eslint
 let g:syntastic_javascript_checkers = ['eslint']
+
